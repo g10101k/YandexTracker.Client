@@ -1,5 +1,8 @@
 namespace YandexTracker.Client.Api;
 
+/// <summary>
+/// Исключение при выполнении запроса
+/// </summary>
 public class ApiException : Exception
 {
     public int StatusCode { get; private set; }
