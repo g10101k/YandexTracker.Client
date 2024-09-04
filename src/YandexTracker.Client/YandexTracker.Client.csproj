@@ -4,6 +4,13 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Yandex Tracker Client</Title>
+        <Authors>Igor Tyulyakov (g101k)</Authors>
+        <Description>Yandex Tracker Client</Description>
+        <Copyright>MIT</Copyright>
+        <PackageProjectUrl>https://github.com/g10101k/YandexTracker.Client</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/g10101k/YandexTracker.Client</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
