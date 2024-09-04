@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using YandexTracker.Client.Api;
 
 namespace YandexTracker.Client;
@@ -21,6 +22,7 @@ public class YandexTrackerClient : HttpClient
     static void UpdateJsonSerializerSettings(JsonSerializerSettings settings)
     {
         settings.NullValueHandling = NullValueHandling.Ignore;
+        settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
     }
 
     protected JsonSerializerSettings JsonSerializerSettings => Settings.Value;

@@ -11,6 +11,7 @@
         <Copyright>MIT</Copyright>
         <PackageProjectUrl>https://github.com/g10101k/YandexTracker.Client</PackageProjectUrl>
         <RepositoryUrl>https://github.com/g10101k/YandexTracker.Client</RepositoryUrl>
+        <Version>1.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>
