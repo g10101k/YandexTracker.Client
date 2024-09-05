@@ -33,12 +33,17 @@ public class Issue
     /// <summary>
     /// 
     /// </summary>
-    public string StatusStartTime { get; set; }
+    public DateTime? StatusStartTime { get; set; }
 
     /// <summary>
     /// Объект с информацией о последнем сотруднике, изменявшим задачу.
     /// </summary>
     public User UpdatedBy { get; set; }
+
+    /// <summary>
+    /// Деадлайн
+    /// </summary>
+    public DateTime? Deadline { get; set; }
 
     public StatusType StatusType { get; set; }
 
@@ -69,7 +74,7 @@ public class Issue
     /// <summary>
     /// Дата и время создания задачи.	
     /// </summary>
-    public string CreatedAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
 
     /// <summary>
     /// Объект с информацией о создателе задачи.	
@@ -99,7 +104,7 @@ public class Issue
     /// <summary>
     /// Дата и время последнего обновления задачи.	
     /// </summary>
-    public string UpdatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
 
     /// <summary>
     /// Объект с информацией о статусе задачи.
@@ -115,6 +120,7 @@ public class Issue
     /// Родительская задача
     /// </summary>
     public Parent Parent { get; set; }
+
     /// <summary>
     /// Избранная задача
     /// </summary>
