@@ -33,7 +33,7 @@ public class Issue
     /// <summary>
     /// 
     /// </summary>
-    public DateTime? StatusStartTime { get; set; }
+    public DateTimeOffset? StatusStartTime { get; set; }
 
     /// <summary>
     /// Объект с информацией о последнем сотруднике, изменявшим задачу.
@@ -43,7 +43,7 @@ public class Issue
     /// <summary>
     /// Деадлайн
     /// </summary>
-    public DateTime? Deadline { get; set; }
+    public DateTimeOffset? Deadline { get; set; }
 
     public StatusType StatusType { get; set; }
 
@@ -74,7 +74,7 @@ public class Issue
     /// <summary>
     /// Дата и время создания задачи.	
     /// </summary>
-    public DateTime? CreatedAt { get; set; }
+    public DateTimeOffset? CreatedAt { get; set; }
 
     /// <summary>
     /// Объект с информацией о создателе задачи.	
@@ -104,7 +104,7 @@ public class Issue
     /// <summary>
     /// Дата и время последнего обновления задачи.	
     /// </summary>
-    public DateTime? UpdatedAt { get; set; }
+    public DateTimeOffset? UpdatedAt { get; set; }
 
     /// <summary>
     /// Объект с информацией о статусе задачи.
@@ -125,4 +125,9 @@ public class Issue
     /// Избранная задача
     /// </summary>
     public bool Favorite { get; set; }
+    
+    /// <summary>
+    /// Чек-лист
+    /// </summary>
+    public List<CheckListItem> ChecklistItems { get; set; }
 }

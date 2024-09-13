@@ -78,7 +78,7 @@ public class YandexTrackerClient : HttpClient
 
         if (status == 200)
         {
-            var objectResponse = await ReadObjectResponseAsync<List<Issue>>(response, CancellationToken.None)
+            var objectResponse = await ReadObjectResponseAsync<List<Issue>>(response, CancellationToken.None, true)
                 .ConfigureAwait(false);
             if (objectResponse.Object == null)
             {
