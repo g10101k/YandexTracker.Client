@@ -1,4 +1,4 @@
-namespace YandexTracker.Client;
+namespace YandexTracker.Client.Settings;
 
 public class YandexApiSettings
 {

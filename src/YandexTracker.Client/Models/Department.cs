@@ -1,4 +1,4 @@
-namespace YandexTracker.Client.Api;
+namespace YandexTracker.Client.Models;
 
 public class Department
 {

@@ -1,6 +1,9 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using YandexTracker.Client.Api;
+using YandexTracker.Client.Exceptions;
+using YandexTracker.Client.Models;
+using YandexTracker.Client.Settings;
 
 namespace YandexTracker.Client;
 
@@ -151,18 +154,4 @@ public class YandexTrackerClient : HttpClient
             throw new ApiException(message, (int)response.StatusCode, string.Empty, exception);
         }
     }
-}
-
-public class GetIssueRequest
-{
-    public Filter? Filter { get; set; }
-    public string Query { get; set; }
-    public string Order { get; set; }
-}
-
-public class Filter
-{
-    public string Queue { get; set; }
-    public string Assignee { get; set; }
-    public Status Status { get; set; }
 }

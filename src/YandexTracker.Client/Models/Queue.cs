@@ -1,6 +1,9 @@
-namespace YandexTracker.Client.Api;
+namespace YandexTracker.Client.Models;
 
-public class Status
+/// <summary>
+/// Очередь
+/// </summary>
+public class Queue
 {
     public string Self { get; set; }
     public string Id { get; set; }

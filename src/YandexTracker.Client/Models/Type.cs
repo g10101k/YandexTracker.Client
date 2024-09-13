@@ -1,6 +1,6 @@
-namespace YandexTracker.Client.Api;
+namespace YandexTracker.Client.Models;
 
-public class Priority
+public class Type
 {
     public string Self { get; set; }
     public string Id { get; set; }

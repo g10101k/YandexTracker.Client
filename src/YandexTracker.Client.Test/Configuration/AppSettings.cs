@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using YandexTracker.Client.Settings;
 
 
 namespace YandexTracker.Client.Test.Configuration;

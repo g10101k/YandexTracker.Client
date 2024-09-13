@@ -1,4 +1,4 @@
-namespace YandexTracker.Client.Api;
+namespace YandexTracker.Client.Exceptions;
 
 /// <summary>
 /// Исключение при выполнении запроса

@@ -1,4 +1,5 @@
 ﻿using YandexTracker.Client.Api;
+using YandexTracker.Client.Models;
 using YandexTracker.Client.Test.Configuration;
 
 namespace YandexTracker.Client.Test;
