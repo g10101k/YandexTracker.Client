@@ -21,7 +21,9 @@ public static class Program
 
         foreach (var r in result)
         {
-            Console.WriteLine(r.Summary);
+            Console.WriteLine(r.Assignee?.Display);
+            Console.WriteLine(r.CreatedBy.Display);
+            Console.WriteLine(r.PreviousStatusLastAssignee?.Display);
         }
     }
 }

@@ -114,20 +114,30 @@ public class Issue
     /// <summary>
     /// Объект с информацией о предыдущем статусе задачи.	
     /// </summary>
-    public Status PreviousStatus { get; set; }
+    public Status? PreviousStatus { get; set; }
 
     /// <summary>
     /// Родительская задача
     /// </summary>
-    public Parent Parent { get; set; }
+    public Parent? Parent { get; set; }
 
     /// <summary>
     /// Избранная задача
     /// </summary>
     public bool Favorite { get; set; }
-    
+
+    /// <summary>
+    /// Дата начала 
+    /// </summary>
+    public DateTimeOffset? Start { get; set; }
+
+    /// <summary>
+    /// Дата завершения 
+    /// </summary>
+    public DateTimeOffset? End { get; set; }
+
     /// <summary>
     /// Чек-лист
     /// </summary>
-    public List<CheckListItem> ChecklistItems { get; set; }
+    public List<CheckListItem>? ChecklistItems { get; set; }
 }
