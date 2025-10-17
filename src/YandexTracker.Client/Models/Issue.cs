@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace YandexTracker.Client.Models;
 
 /// <summary>
@@ -140,4 +142,10 @@ public class Issue
     /// Чек-лист
     /// </summary>
     public List<CheckListItem>? ChecklistItems { get; set; }
+
+    /// <summary>
+    /// Дополнительные данные, не соответствующие полям объекта.
+    /// </summary>
+    [JsonExtensionData]
+    public Dictionary<string, object>? ExtensionData { get; set; }
 }
