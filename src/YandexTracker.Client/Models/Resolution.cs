@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace YandexTracker.Client;
+namespace YandexTracker.Client.Models;
 
 public class Resolution
 {

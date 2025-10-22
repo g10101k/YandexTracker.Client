@@ -13,17 +13,19 @@ public static class Program
         using var client = new YandexTrackerClient(AppSettings.Instance.YandexApi);
         var result = client.GetIssues(new GetIssueRequest()
         {
-            Filter = new Filter()
-            {
-                Status = new Status() { Id = "3" }
-            }
+            Query = "TIO.tfsId: notEmpty() "
         }, 500, 1).Result;
 
         foreach (var r in result)
         {
-            Console.WriteLine(r.Assignee?.Display);
-            Console.WriteLine(r.CreatedBy.Display);
-            Console.WriteLine(r.PreviousStatusLastAssignee?.Display);
+            var transactions = client.GetTransitions(r.Key).Result;
+
+            client.ExecuteTransition(r.Key, transactions[0].Id, new ExecuteTransitionRequest()).Wait();
+
+            _ = client.UpdateIssue(r.Key, new UpdateIssueRequest()
+            {
+                Deadline = DateTimeOffset.Now,
+            }).Result;
         }
     }
 }

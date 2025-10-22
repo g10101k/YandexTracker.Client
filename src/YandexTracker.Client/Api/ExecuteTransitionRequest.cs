@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace YandexTracker.Client;
+namespace YandexTracker.Client.Api;
 
 public class ExecuteTransitionRequest : Dictionary<string, object>
 {
@@ -40,9 +40,9 @@ public class ExecuteTransitionRequest : Dictionary<string, object>
     /// Установить спринт
     /// </summary>
     [JsonProperty("sprint", NullValueHandling = NullValueHandling.Ignore)]
-    public SprintReference Sprint
+    public Models.SprintReference Sprint
     {
-        get => ContainsKey("sprint") ? this["sprint"] as SprintReference : null;
+        get => ContainsKey("sprint") ? this["sprint"] as Models.SprintReference : null;
         set => this["sprint"] = value;
     }
 }
