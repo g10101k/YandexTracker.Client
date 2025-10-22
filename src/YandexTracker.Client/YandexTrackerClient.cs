@@ -1,3 +1,4 @@
+using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using YandexTracker.Client.Api;
@@ -97,7 +98,95 @@ public class YandexTrackerClient : HttpClient
         throw new ApiException("The HTTP status code of the response was not expected (" + status + ").", status,
             responseData, null);
     }
+    
+    public async Task<Issue> UpdateIssue(string issueId, UpdateIssueRequest request)
+    {
+        if (string.IsNullOrEmpty(issueId))
+            throw new ArgumentNullException(nameof(issueId));
 
+        if (request == null)
+            throw new ArgumentNullException(nameof(request));
+
+        var json = JsonConvert.SerializeObject(request, Settings.Value)
+                   ?? throw new ArgumentNullException(nameof(request));
+
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await PatchAsync($"/v3/issues/{issueId}", content).ConfigureAwait(false);
+
+        var status = (int)response.StatusCode;
+
+        if (status == 200)
+        {
+            var objectResponse = await ReadObjectResponseAsync<Issue>(response, CancellationToken.None)
+                .ConfigureAwait(false);
+
+            return objectResponse.Object ?? throw new ApiException("Response was null which was not expected.", status, objectResponse.Text, null);
+        }
+
+        var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        throw new ApiException("The HTTP status code of the response was not expected (" + status + ").", status,
+            responseData, null);
+    }
+
+    public async Task<List<Transition>> GetTransitions(string issueId)
+    {
+        if (string.IsNullOrEmpty(issueId))
+            throw new ArgumentNullException(nameof(issueId));
+
+        var response = await GetAsync($"/v3/issues/{issueId}/transitions").ConfigureAwait(false);
+        var status = (int)response.StatusCode;
+
+        if (status == 200)
+        {
+            var objectResponse = await ReadObjectResponseAsync<List<Transition>>(response, CancellationToken.None)
+                .ConfigureAwait(false);
+        
+            if (objectResponse.Object == null)
+            {
+                throw new ApiException("Response was null which was not expected.", status, objectResponse.Text, null);
+            }
+
+            return objectResponse.Object;
+        }
+
+        var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        throw new ApiException("The HTTP status code of the response was not expected (" + status + ").", status,
+            responseData, null);
+    }
+    
+    
+    public async Task ExecuteTransition(string issueId, string transitionId, ExecuteTransitionRequest request)
+    {
+        if (string.IsNullOrEmpty(issueId))
+            throw new ArgumentNullException(nameof(issueId));
+    
+        if (string.IsNullOrEmpty(transitionId))
+            throw new ArgumentNullException(nameof(transitionId));
+    
+        if (request == null)
+            throw new ArgumentNullException(nameof(request));
+
+        var json = JsonConvert.SerializeObject(request, Settings.Value)
+                   ?? throw new ArgumentNullException(nameof(request));
+    
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+    
+        var response = await PostAsync($"/v3/issues/{issueId}/transitions/{transitionId}/_execute", content);
+        var status = (int)response.StatusCode;
+
+        if (status == 200 || status == 204)
+        {
+            // Успешное выполнение, переход выполнен
+            return;
+        }
+
+        var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        throw new ApiException("The HTTP status code of the response was not expected (" + status + ").", status,
+            responseData, null);
+    }
+
+    
     protected struct ObjectResponseResult<T>
     {
         public ObjectResponseResult(T responseObject, string responseText)
